@@ -23,3 +23,5 @@ echo 'MACHTYPE' $MACHTYPE
 echo 'LANG' $LANG 
 echo 'PWD' $PWD
 echo 'OLDPWD' $OLDPWD
+echo 'PATH' $PATH
+echo 'PS1' $PS1

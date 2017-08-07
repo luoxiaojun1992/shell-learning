@@ -12,3 +12,7 @@ test_func()
 }
 
 test_func
+
+echo 'HISTCMD' $HISTCMD
+echo 'HISTFILE' $HISTFILE
+echo 'HISTFILESIZE' $HISTFILESIZE

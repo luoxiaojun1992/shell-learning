@@ -20,3 +20,7 @@ echo ${#Name[*]}
 
 # 元素长度
 echo ${#Name[0]}
+
+# 数组截取
+echo ${Name[@]:0:2}
+echo ${Name[1]:0:1}

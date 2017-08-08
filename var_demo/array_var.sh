@@ -9,3 +9,6 @@ echo ${Arr[1]}
 declare -a Name=('John' 'Sue')
 echo ${Name[0]}
 echo ${Name[1]}
+
+echo ${Name[@]}
+echo ${Arr[*]}

@@ -10,5 +10,10 @@ declare -a Name=('John' 'Sue')
 echo ${Name[0]}
 echo ${Name[1]}
 
+# 所有元素
 echo ${Name[@]}
 echo ${Arr[*]}
+
+# 数组长度
+echo ${#Arr[@]}
+echo ${#Name[*]}

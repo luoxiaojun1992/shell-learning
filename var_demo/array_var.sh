@@ -17,3 +17,6 @@ echo ${Arr[*]}
 # 数组长度
 echo ${#Arr[@]}
 echo ${#Name[*]}
+
+# 元素长度
+echo ${#Name[0]}

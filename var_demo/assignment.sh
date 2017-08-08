@@ -6,6 +6,6 @@ echo $a
 echo ${a}
 echo $c
 
-# shopt -s -o yesunset
+# shopt -s -o nounset
 
 echo $c

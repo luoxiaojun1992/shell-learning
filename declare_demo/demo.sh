@@ -6,8 +6,8 @@ echo $a
 declare -r b=2 
 
 declare -a arr='([0]=1 [1]=2)'
-echo $arr[0]
-echo $arr[1]
+echo ${arr[0]}
+echo ${arr[1]}
 
 test_func()
 {

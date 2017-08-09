@@ -24,3 +24,13 @@ echo ${#Name[0]}
 # 数组截取
 echo ${Name[@]:0:2}
 echo ${Name[1]:0:1}
+
+# 数组替换
+Name=${Name[0]/John/Mike}
+echo ${Name[@]}
+
+# 删除数组
+unset Arr
+echo ${Arr[@]}
+unset Name[0]
+echo ${Name[@]}

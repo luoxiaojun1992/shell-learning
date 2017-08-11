@@ -1,1 +1,13 @@
-#!
+#! /bin/bash
+
+test -z ""
+echo $?
+
+test -n ""
+echo $?
+
+#[-z ""]
+#echo $?
+#[-n ""]
+#echo $?
+

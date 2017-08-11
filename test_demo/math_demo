@@ -3,5 +3,20 @@
 test 1 -eq 2
 echo $?
 
+[ 1 -eq 2 ]
+echo $?
+
 test 2 \> 1
+echo $?
+
+[ 1 -gt 2 ]
+echo $?
+
+[ 1 -lt 2 ]
+echo $?
+
+[ 1 -ge 2 ]
+echo $?
+
+[ 1 -le 2 ]
 echo $?

@@ -6,8 +6,13 @@ echo $?
 test -n ""
 echo $?
 
-#[-z ""]
-#echo $?
-#[-n ""]
-#echo $?
+[ -z "" ]
+echo $?
+[ -n "" ]
+echo $?
 
+[ "str" \< "foo" ]
+echo $?
+
+[[ "str" < "foo" ]]
+echo $?

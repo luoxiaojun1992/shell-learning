@@ -1,0 +1,4 @@
+#! /bin/bash
+
+[ -e /etc/hosts ]
+echo $?

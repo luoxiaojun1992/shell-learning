@@ -6,6 +6,6 @@ echo -e 'Hello \t'
 
 type echo
 
-#
-sed -i '' 's/^%//' hello.sh
+# MAC needs a suffix ''
+# sed -i '' 's/^%//' hello.sh
 

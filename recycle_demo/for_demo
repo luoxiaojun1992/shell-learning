@@ -5,3 +5,9 @@ do
     echo $FRUIT
 done
 
+FRUITS="orange apple banana"
+for FRUIT in $FRUITS
+do
+    echo $FRUIT
+done
+

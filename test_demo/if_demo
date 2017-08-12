@@ -1,0 +1,7 @@
+#! /bin/bash
+
+SCORE=95
+
+if [ "$SCORE" -eq 95 ]; then
+    echo 'Pass'
+fi

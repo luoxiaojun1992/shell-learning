@@ -4,4 +4,13 @@ SCORE=95
 
 if [ "$SCORE" -eq 95 ]; then
     echo 'Pass'
+else
+    echo 'Not Pass'
 fi
+
+if [ "$SCORE" -gt 95 ]; then
+    echo 'Pass'
+else
+    echo 'Not Pass'
+fi
+

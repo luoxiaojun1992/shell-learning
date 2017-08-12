@@ -8,3 +8,10 @@ case "$SCORE" in
 *)  echo 'Not match';;
 esac
 
+case "$SCORE" in 
+    *[[:upper:]]*) echo 'Upper';;
+    *[[:lower:]]*) echo 'Lower';;
+    *[[:digit:]]*) echo 'Digit';;
+    *) echo '*';;
+esac
+

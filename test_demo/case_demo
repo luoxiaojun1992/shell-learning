@@ -1,0 +1,10 @@
+#! /bin/bash
+
+SCORE=95
+
+case "$SCORE" in 
+95) echo '95';;
+94) echo '94';;
+*)  echo 'Not match';;
+esac
+

@@ -11,3 +11,13 @@ do
     echo $FRUIT
 done
 
+for var in 1 2 3
+do
+    echo $var
+done
+
+for var in {1..10}
+do
+    echo $var
+done
+

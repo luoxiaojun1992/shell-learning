@@ -1,0 +1,13 @@
+#! /bin/bash
+
+say_hello() {
+    if [ $1 -gt 0 ];then
+        echo $1
+        i=$1
+        let "i--"
+        say_hello $i 
+    fi
+}
+
+say_hello 10
+

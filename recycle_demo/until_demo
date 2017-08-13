@@ -1,0 +1,22 @@
+#! /bin/bash
+
+until false 
+do
+    echo 'until false'
+    break
+done
+
+until ((0))
+do
+    echo 'until 0'
+    break
+done
+
+SCORE=95
+
+until [ "$SCORE" -ge 96 ]
+do
+    echo $SCORE
+    let "SCORE+=1"
+done
+

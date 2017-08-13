@@ -1,0 +1,10 @@
+#! /bin/bash
+
+TIMES=100
+
+while [ "$TIMES" -gt 0 ]
+do
+    echo $TIMES
+    let "TIMES-=1"
+done
+

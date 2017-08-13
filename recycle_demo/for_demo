@@ -36,3 +36,13 @@ do
     echo $var
 done
 
+for VARIABLE
+do
+    echo $VARIABLE
+done
+
+for VAR in $@
+do
+    echo $VAR
+done
+

@@ -31,3 +31,8 @@ do
     echo $var
 done
 
+for var in $(seq 1 2 10)
+do
+    echo $var
+done
+

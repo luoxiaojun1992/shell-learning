@@ -1,0 +1,14 @@
+#! /bin/bash
+
+echo 'Which car do you prefer?'
+
+select car in benz bmw other
+do
+    case "$car" in 
+        benz) echo 'benz';;
+        bmw) echo 'bmw';;
+        other) echo 'other';;
+        *) echo 'unknown';;
+    esac
+done
+

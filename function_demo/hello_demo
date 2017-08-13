@@ -1,0 +1,13 @@
+#! /bin/bash
+
+say_hello() {
+    #declare -f
+    #declare -F
+    echo $FUNCNAME
+    echo 'Hello'
+    return 0
+}
+
+say_hello
+echo $?
+

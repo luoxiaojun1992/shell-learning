@@ -5,9 +5,13 @@ say_hello() {
     #declare -F
     echo $FUNCNAME
     echo 'Hello'
+    local a=1
+    echo $a
     return 0
 }
 
+a=2
 say_hello
 echo $?
+echo $a
 

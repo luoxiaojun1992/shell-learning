@@ -9,6 +9,12 @@ type echo
 # MAC needs a suffix ''
 # sed -i '' 's/^%//' hello.sh
 
+echo $1
+
+shift 1
+
+echo $1
+
 read -p "Please input a number:" NUMBER
 echo $NUMBER
 

@@ -8,3 +8,24 @@ do
     let "TIMES-=1"
 done
 
+while read LINE
+do
+    echo $LINE
+    break
+done
+
+while ((1))
+do
+    break
+done
+
+while true
+do
+    break
+done
+
+while :
+do
+    break
+done
+

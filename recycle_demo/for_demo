@@ -21,3 +21,13 @@ do
     echo $var
 done
 
+for var in `seq 1 10`
+do
+    echo $var
+done
+
+for var in $(seq 1 10)
+do
+    echo $var
+done
+

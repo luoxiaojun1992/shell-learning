@@ -1,0 +1,7 @@
+#! /bin/bash
+
+source ./lib_demo
+. ./lib_demo
+
+_file_exists $1
+

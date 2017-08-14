@@ -1,0 +1,11 @@
+#! /bin/bash
+
+source /etc/init.d/functions
+
+confirm ANS
+if [ "$ANS" -eq 0 ];then
+    echo 'confirmed'
+else
+    echo 'not confirmed'
+fi
+

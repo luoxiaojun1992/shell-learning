@@ -1,0 +1,57 @@
+#! /bin/bash
+
+for FRUIT in orange apple
+do
+    echo $FRUIT
+done
+
+FRUITS="orange apple banana"
+for FRUIT in $FRUITS
+do
+    echo $FRUIT
+done
+
+for var in 1 2 3
+do
+    echo $var
+done
+
+for var in {1..10}
+do
+    echo $var
+done
+
+for var in `seq 1 10`
+do
+    echo $var
+done
+
+for var in $(seq 1 10)
+do
+    echo $var
+done
+
+for var in $(seq 1 2 10)
+do
+    echo $var
+done
+
+for VARIABLE
+do
+    echo $VARIABLE
+done
+
+for VAR in $@
+do
+    echo $VAR
+done
+
+for((i=1;i<10;i++))
+do
+    echo $i
+done
+
+for((i=1,j=1;i<10;i++,j++))
+do
+    echo "i=$i,j=$j"
+done

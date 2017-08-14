@@ -1,0 +1,32 @@
+#! /bin/bash
+
+TIMES=100
+
+while [ "$TIMES" -gt 0 ]
+do
+    echo $TIMES
+    let "TIMES-=1"
+done
+
+while read LINE
+do
+    echo $LINE
+    break
+done
+
+while ((1))
+do
+    break
+done
+
+while true
+do
+    break
+done
+
+while :
+do
+    sleep 5
+    break
+done
+

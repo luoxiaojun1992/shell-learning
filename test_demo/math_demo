@@ -6,6 +6,9 @@ echo $?
 [ 1 -eq 2 ]
 echo $?
 
+[ 1 -ne 2 ]
+echo $?
+
 test 2 \> 1
 echo $?
 

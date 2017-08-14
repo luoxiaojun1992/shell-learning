@@ -1,0 +1,14 @@
+#! /bin/bash
+
+_file_exists(){
+    if [ -e $1 ];then
+        echo "$1 exists"
+    fi
+
+    if [ -f $1 ];then
+        echo "$1 exists"
+    fi
+}
+
+_file_exists $1
+

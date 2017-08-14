@@ -1,0 +1,34 @@
+#! /bin/bash
+
+SCORE=95
+
+if [ "$SCORE" -eq 95 ]; then
+    echo 'Pass'
+else
+    echo 'Not Pass'
+fi
+
+if [ "$SCORE" -gt 95 ]; then
+    echo 'Pass'
+else
+    echo 'Not Pass'
+fi
+
+if [ "$SCORE" -gt 95 ]; then
+    echo 'Good'
+else
+    if [ "$SCORE" -le 95 -a "$SCORE" -gt 90 ]; then
+        echo 'Pass'
+    else
+        echo 'Not Pass'
+    fi
+fi
+
+if [ "$SCORE" -gt 95 ]; then
+    echo 'Good'
+elif [ "$SCORE" -le 95 -a "$SCORE" -gt 90 ]; then
+    echo 'Pass'
+else
+    echo 'Not Pass'
+fi
+

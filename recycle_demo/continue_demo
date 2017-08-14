@@ -1,0 +1,14 @@
+#! /bin/bash
+
+i=1
+
+while true
+do
+    echo $i
+    let "i++"
+    if [ $i -gt 5 ]; then
+        break
+    fi
+    continue 2
+done
+

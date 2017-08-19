@@ -30,5 +30,8 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 # 发送已经建立和相关的数据包
 iptables -A OUPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-# 开放80端口
+# 开放80端口入口
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+# 开放80端口出口
+iptables -A OUPUT -p tcp -m state --state NEW --dport 80 -j ACCEPT

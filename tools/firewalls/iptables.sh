@@ -17,3 +17,15 @@ iptables -A INPUT -p icmp --icmp-type any -j ACCEPT
 
 # 发送icmp数据包
 iptables -A OUTPUT -p icmp --icmp any -j ACCEPT
+
+# 接收本地数据包
+iptables -A INPUT -s localhost -d localhost -j ACCEPT
+
+# 发送本地数据包
+iptables -A OUTPUT -s localhost -d localhost -j ACCEPT
+
+# 接收已经建立和相关的数据包
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# 发送已经建立和相关的数据包
+iptables -A OUPUT -m state --state ESTABLISHED,RELATED -j ACCEPT

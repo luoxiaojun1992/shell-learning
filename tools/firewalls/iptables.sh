@@ -35,3 +35,6 @@ iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
 # 开放80端口出口
 iptables -A OUPUT -p tcp -m state --state NEW --dport 80 -j ACCEPT
+
+# 允许发送udp包
+iptables -A OUTPUT -p udp --dport 53 -j ACCEPT

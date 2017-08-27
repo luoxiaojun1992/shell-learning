@@ -3,7 +3,10 @@
 install_mysql57() {
 	echo 'Installing mysql57...'
 
-	rpm -Uvh mysql57-community-release-el6-n.noarch.rpm
+	rm -rf ~/mysql57-community-release-el6-n.noarch.rpm
+	wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+
+	rpm -Uvh ~/mysql57-community-release-el6-n.noarch.rpm
 	yum -y install mysql-community-server
 	if [ $? -ne 0 ]; then
 		echo 'Failed to install mysql57'
@@ -153,6 +156,8 @@ return 0
 }
 
 install_mysql57
+cd ~
+
 if [ $? -eq 0 ]; then
 	echo 'mysql57 installed'
 else

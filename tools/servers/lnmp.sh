@@ -118,9 +118,13 @@ fi
 return 0
 }
 
+cd ~
+
 install_php7
 if [ $? -eq 0 ]; then
 	echo 'PHP-7 installed'
 else
 	echo 'Failed to install PHP-7'
 fi
+
+cd ~

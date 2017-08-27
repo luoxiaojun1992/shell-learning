@@ -5,8 +5,8 @@ install_php7() {
 echo 'Installing PHP-7...'
 
 # Clear Old PHP-7
-rm -rf php-7.2.0beta3
-rm -rf php-7.2.0beta3.tar.gz
+rm -rf ~/php-7.2.0beta3
+rm -rf ~/php-7.2.0beta3.tar.gz
 rm -rf /usr/local/php
 rm -rf /usr/local/lib/php
 kill `ps aux|grep php-fpm | awk '{print $2}'`
@@ -62,7 +62,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Download PHP-7
-if [ ! -f ./php-7.2.0beta3.tar.gz ]; then
+if [ ! -f ~/php-7.2.0beta3.tar.gz ]; then
 	wget https://downloads.php.net/~remi/php-7.2.0beta3.tar.gz
 fi
 if [ $? -ne 0 ]; then
@@ -124,7 +124,7 @@ if [ $? -ne 0 ]; then
 	return 1
 fi
 
-php-fpm -y /usr/local/etc/php-fpm.conf -c /usr/local/lib/php.ini
+/usr/local/sbin/php-fpm -y /usr/local/etc/php-fpm.conf -c /usr/local/lib/php.ini
 if [ $? -ne 0 ]; then
 	echo 'Failed to start php-fpm'
 	return 1

@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# Usage
+# flock -xn /tmp/lnmp-install.lock -c 'sudo nohup ./lnmp.sh >> ~/lnmp-install.log 2>&1 &'
+
 install_mysql57() {
 	echo 'Installing mysql57...'
 

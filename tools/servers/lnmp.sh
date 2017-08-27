@@ -3,11 +3,59 @@
 # Usage
 # flock -xn /tmp/lnmp-install.lock -c 'sudo nohup ./lnmp.sh >> ~/lnmp-install.log 2>&1 &'
 
+install_nginx1121() {
+	echo 'Installing nginx1.12.1...'
+
+	rm -rf ~/nginx-1.12.1.tar.gz
+	rm -rf /usr/local/nginx
+	kill `ps aux|grep nginx | awk '{print $2}'`
+
+	wget http://nginx.org/download/nginx-1.12.1.tar.gz
+	if [ $? -ne 0 ]; then
+		echo 'Failed to download nginx1.12.1'
+		return 1
+	fi
+
+	tar -zxvf ~/nginx-1.12.1.tar.gz
+	if [ $? -ne 0 ]; then
+		echo 'Failed to extract nginx1.12.1'
+		return 1
+	fi
+
+	cd ~/nginx-1.12.1
+
+	./configure
+	if [ $? -ne 0 ]; then
+		echo 'Failed to configure nginx1.12.1'
+		return 1
+	fi
+
+	make
+	if [ $? -ne 0 ]; then
+		echo 'Failed to make nginx1.12.1'
+		return 1
+	fi
+
+	make install
+	if [ $? -ne 0 ]; then
+		echo 'Failed to install nginx1.12.1'
+		return 1
+	fi
+
+	return 0
+}
+
 install_mysql57() {
 	echo 'Installing mysql57...'
 
+	yum -y remove mysql-community-server
 	rm -rf ~/mysql57-community-release-el7-11.noarch.rpm
+
 	wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+	if [ $? -ne 0 ]; then
+		echo 'Failed to download mysql57'
+		return 1
+	fi
 
 	rpm -Uvh ~/mysql57-community-release-el7-11.noarch.rpm
 	yum -y install mysql-community-server
@@ -16,6 +64,7 @@ install_mysql57() {
 		return 1 
 	fi
 
+	service mysqld stop
 	service mysqld start
 	if [ $? -ne 0 ]; then
 		echo 'Failed to install mysql57'
@@ -158,8 +207,17 @@ fi
 return 0
 }
 
-#install_mysql57
+cd ~
+install_nginx1121
+
+if [ $? -eq 0 ]; then
+	echo 'Nginx1.12.1 installed'
+else
+	echo 'Failed to install Nginx1.12.1'
+fi
+
 #cd ~
+#install_mysql57
 
 #if [ $? -eq 0 ]; then
 	echo 'mysql57 installed'
@@ -167,8 +225,8 @@ return 0
 #	echo 'Failed to install mysql57'
 #fi
 
-install_php7
 cd ~
+install_php7
 
 if [ $? -eq 0 ]; then
 	echo 'PHP-7 installed'

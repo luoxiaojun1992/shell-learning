@@ -4,6 +4,11 @@ install_php7() {
 # Install PHP-7
 echo 'Installing PHP-7...'
 
+# Clear Old PHP-7
+rm -rf /usr/local/php
+rm -rf /usr/local/lib/php
+kill `ps aux|grep php-fpm | awk '{print $2}'`
+
 # Install libxml2-devel
 echo 'Installing libxml2-devel'
 
@@ -55,13 +60,16 @@ if [ $? -ne 0 ]; then
 fi
 
 # Download PHP-7
-wget https://downloads.php.net/~remi/php-7.2.0beta3.tar.gz
+if [ ! -f ./php-7.2.0beta3.tar.gz ]; then
+	wget https://downloads.php.net/~remi/php-7.2.0beta3.tar.gz
+fi
 if [ $? -ne 0 ]; then
 	echo 'Failed to download PHP-7'
 	return 1
 fi
 
 # Extract PHP-7
+rm -rf php-7.2.0beta3
 tar -zxvf php-7.2.0beta3.tar.gz
 if [ $? -ne 0 ]; then
 	echo 'Failed to extract PHP-7'
@@ -95,9 +103,15 @@ fi
 echo 'PHP-7 installed'
 
 # PHP-7 Configuration
-cp php.ini-production /usr/local/lib/php.ini
-cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
-cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
+if [ ! -f /usr/local/lib/php.ini ]; then
+	cp php.ini-production /usr/local/lib/php.ini
+fi
+if [ ! -f /usr/local/etc/php-fpm.conf ]; then
+	cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
+fi
+if [ ! -f /usr/local/etc/php-fpm.d/www.conf ]; then
+	cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
+fi
 
 if [ ! -d /usr/local/log ]; then
 	mkdir -p /usr/local/log

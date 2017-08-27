@@ -11,6 +11,9 @@ install_nginx1121() {
 	rm -rf /usr/local/nginx
 	kill `ps aux|grep nginx | awk '{print $2}'`
 
+	# Install dependencies
+	yum -y install zlib zlib-devel openssl openssl--devel pcre pcre-devel
+
 	wget http://nginx.org/download/nginx-1.12.1.tar.gz
 	if [ $? -ne 0 ]; then
 		echo 'Failed to download nginx1.12.1'

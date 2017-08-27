@@ -55,6 +55,7 @@ install_nginx1121() {
 install_mysql57() {
 	echo 'Installing mysql57...'
 
+	service mysqld stop
 	yum -y remove mysql-community-server
 	rm -rf ~/mysql57-community-release-el7-11.noarch.rpm
 
@@ -71,10 +72,9 @@ install_mysql57() {
 		return 1 
 	fi
 
-	service mysqld stop
 	service mysqld start
 	if [ $? -ne 0 ]; then
-		echo 'Failed to install mysql57'
+		echo 'Failed to start mysql57'
 		return 1 
 	fi
 	

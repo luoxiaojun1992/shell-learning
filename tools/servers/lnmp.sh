@@ -1,6 +1,6 @@
 #! /bin/bash
 
-install_mysql57 {
+install_mysql57() {
 	echo 'Installing mysql57...'
 
 	rpm -Uvh mysql57-community-release-el6-n.noarch.rpm

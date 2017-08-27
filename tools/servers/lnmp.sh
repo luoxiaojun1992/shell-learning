@@ -1,5 +1,24 @@
 #! /bin/bash
 
+install_mysql57 {
+	echo 'Installing mysql57...'
+
+	rpm -Uvh mysql57-community-release-el6-n.noarch.rpm
+	yum -y install mysql-community-server
+	if [ $? -ne 0 ]; then
+		echo 'Failed to install mysql57'
+		return 1 
+	fi
+
+	service mysqld start
+	if [ $? -ne 0 ]; then
+		echo 'Failed to install mysql57'
+		return 1 
+	fi
+	
+	return 0
+}
+
 install_php7() {
 # Install PHP-7
 echo 'Installing PHP-7...'
@@ -132,6 +151,13 @@ fi
 
 return 0
 }
+
+install_mysql57
+if [ $? -eq 0 ]; then
+	echo 'mysql57 installed'
+else
+	echo 'Failed to install mysql57'
+fi
 
 cd ~
 

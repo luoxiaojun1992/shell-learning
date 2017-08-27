@@ -53,3 +53,43 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
+# Download PHP-7
+wget https://downloads.php.net/~remi/php-7.2.0beta3.tar.gz
+if [ $? -ne 0 ]; then
+	echo 'Failed to download PHP-7'
+	exit 1
+fi
+
+# Extract PHP-7
+tar -zxvf php-7.2.0beta3.tar.gz
+if [ $? -ne 0 ]; then
+	echo 'Failed to extract PHP-7'
+	exit 1
+fi
+
+cd php-7.2.0beta3
+
+# Configure PHP-7
+./configure --with-mcrypt=/usr/include --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-gd --with-iconv --with-zlib --enable-xml --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --enable-mbregex --enable-fpm --enable-mbstring --enable-ftp --enable-gd-native-ttf --with-openssl --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --enable-soap --without-pear --with-gettext --enable-session --with-curl --with-jpeg-dir --with-freetype-dir --enable-opcache
+
+if [ $? -ne 0 ]; then
+	echo 'Failed to configure PHP-7'
+	exit 1
+fi
+
+# Make PHP-7
+make
+if [ $? -ne 0 ]; then
+	echo 'Failed to make PHP-7'
+	exit 1
+fi
+
+# Install PHP-7
+make install
+if [ $? -ne 0 ]; then
+	echo 'Failed to install PHP-7'
+	exit 1
+fi
+
+echo 'PHP-7 installed'
+

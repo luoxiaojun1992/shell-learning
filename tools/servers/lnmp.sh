@@ -96,6 +96,26 @@ echo 'PHP-7 installed'
 
 # PHP-7 Configuration
 cp php.ini-production /usr/local/lib/php.ini
+cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
+cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
+
+if [ ! -d /usr/local/log ]; then
+	mkdir -p /usr/local/log
+fi
+
+sed -i 's/NONE/\/usr\/local/g' /usr/local/etc/php-fpm.conf
+if [ $? -ne 0 ]; then
+	echo 'Failed to init php-fpm.conf'
+	return 1
+fi
+
+php-fpm -y /usr/local/etc/php-fpm.conf -c /usr/local/lib/php.ini
+if [ $? -ne 0 ]; then
+	echo 'Failed to start php-fpm'
+	return 1
+fi
+
+return 0
 }
 
 install_php7

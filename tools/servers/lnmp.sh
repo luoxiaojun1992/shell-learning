@@ -95,6 +95,14 @@ rm -rf /usr/local/php
 rm -rf /usr/local/lib/php
 kill `ps aux|grep php-fpm | awk '{print $2}'`
 
+# Install dpkg
+echo 'Installing dpkg'
+yum -y install dpkg
+if [ $? -ne 0 ]; then
+	echo 'Failed to install dpkg'
+	return 1
+fi
+
 # Install libxml2-devel
 echo 'Installing libxml2-devel'
 

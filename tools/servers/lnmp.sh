@@ -103,6 +103,14 @@ if [ $? -ne 0 ]; then
 	return 1
 fi
 
+# Install curl-devel
+echo 'Installing curl-devel'
+yum -y install curl-devel
+if [ $? -ne 0 ]; then
+	echo 'Failed to install curl-devel'
+	return 1
+fi
+
 # Install libxml2-devel
 echo 'Installing libxml2-devel'
 

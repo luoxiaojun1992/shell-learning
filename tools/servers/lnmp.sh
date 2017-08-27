@@ -158,14 +158,14 @@ fi
 return 0
 }
 
-install_mysql57
-cd ~
+#install_mysql57
+#cd ~
 
-if [ $? -eq 0 ]; then
+#if [ $? -eq 0 ]; then
 	echo 'mysql57 installed'
-else
-	echo 'Failed to install mysql57'
-fi
+#else
+#	echo 'Failed to install mysql57'
+#fi
 
 install_php7
 cd ~

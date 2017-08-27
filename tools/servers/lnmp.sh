@@ -7,6 +7,7 @@ install_nginx1121() {
 	echo 'Installing nginx1.12.1...'
 
 	rm -rf ~/nginx-1.12.1.tar.gz
+	rm -rf ~/nginx-1.12.1
 	rm -rf /usr/local/nginx
 	kill `ps aux|grep nginx | awk '{print $2}'`
 
@@ -220,7 +221,7 @@ fi
 #install_mysql57
 
 #if [ $? -eq 0 ]; then
-	echo 'mysql57 installed'
+#	echo 'mysql57 installed'
 #else
 #	echo 'Failed to install mysql57'
 #fi

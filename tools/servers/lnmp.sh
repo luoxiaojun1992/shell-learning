@@ -5,6 +5,8 @@ install_php7() {
 echo 'Installing PHP-7...'
 
 # Clear Old PHP-7
+rm -rf php-7.2.0beta3
+rm -rf php-7.2.0beta3.tar.gz
 rm -rf /usr/local/php
 rm -rf /usr/local/lib/php
 kill `ps aux|grep php-fpm | awk '{print $2}'`
@@ -69,7 +71,6 @@ if [ $? -ne 0 ]; then
 fi
 
 # Extract PHP-7
-rm -rf php-7.2.0beta3
 tar -zxvf php-7.2.0beta3.tar.gz
 if [ $? -ne 0 ]; then
 	echo 'Failed to extract PHP-7'

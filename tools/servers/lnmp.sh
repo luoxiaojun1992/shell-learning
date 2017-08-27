@@ -93,3 +93,6 @@ fi
 
 echo 'PHP-7 installed'
 
+# PHP-7 Configuration
+cp php.ini-production /usr/local/lib/php.ini
+

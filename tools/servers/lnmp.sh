@@ -1,5 +1,6 @@
 #! /bin/bash
 
+install_php7() {
 # Install PHP-7
 echo 'Installing PHP-7...'
 
@@ -10,7 +11,7 @@ yum -y install libxml2-devel
 
 if [ $? -ne 0 ]; then
 	echo 'Failed to install libxml2-devel'
-	exit 1
+	return 1
 fi
 
 # Install openssl-devel
@@ -20,7 +21,7 @@ yum -y install openssl-devel
 
 if [ $? -ne 0 ]; then
 	echo 'Failed to install openssl-devel'
-	exit 1
+	return 1
 fi
 
 # Install libjpeg-devel
@@ -30,7 +31,7 @@ yum -y install libjpeg-devel
 
 if [ $? -ne 0 ]; then
 	echo 'Failed to install libjpeg-devel'
-	exit 1
+	return 1
 fi
 
 # Install libpng-devel
@@ -40,7 +41,7 @@ yum -y install libpng-devel
 
 if [ $? -ne 0 ]; then
 	echo 'Failed to install libpng-devel'
-	exit 1
+	return 1
 fi
 
 # Install freetype-devel
@@ -50,21 +51,21 @@ yum -y install freetype-devel
 
 if [ $? -ne 0 ]; then
 	echo 'Failed to install freetype-devel'
-	exit 1
+	return 1
 fi
 
 # Download PHP-7
 wget https://downloads.php.net/~remi/php-7.2.0beta3.tar.gz
 if [ $? -ne 0 ]; then
 	echo 'Failed to download PHP-7'
-	exit 1
+	return 1
 fi
 
 # Extract PHP-7
 tar -zxvf php-7.2.0beta3.tar.gz
 if [ $? -ne 0 ]; then
 	echo 'Failed to extract PHP-7'
-	exit 1
+	return 1
 fi
 
 cd php-7.2.0beta3
@@ -74,25 +75,32 @@ cd php-7.2.0beta3
 
 if [ $? -ne 0 ]; then
 	echo 'Failed to configure PHP-7'
-	exit 1
+	return 1
 fi
 
 # Make PHP-7
 make
 if [ $? -ne 0 ]; then
 	echo 'Failed to make PHP-7'
-	exit 1
+	return 1
 fi
 
 # Install PHP-7
 make install
 if [ $? -ne 0 ]; then
 	echo 'Failed to install PHP-7'
-	exit 1
+	return 1
 fi
 
 echo 'PHP-7 installed'
 
 # PHP-7 Configuration
 cp php.ini-production /usr/local/lib/php.ini
+}
 
+install_php7
+if [ $? -eq 0 ]; then
+	echo 'PHP-7 installed'
+else
+	echo 'Failed to install PHP-7'
+fi

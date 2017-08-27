@@ -43,6 +43,12 @@ install_nginx1121() {
 		return 1
 	fi
 
+	/usr/local/nginx/sbin/nginx
+	if [ $? -ne 0 ]; then
+		echo 'Failed to start nginx1.12.1'
+		return 1
+	fi
+
 	return 0
 }
 

@@ -63,6 +63,13 @@ install_nginx1121() {
 		return 1
 	fi
 
+	# Modify Keepalive Timeout
+	sed -i '1,$s/keepalive_timeout  65;/keepalive_timeout  60;/g' /usr/local/nginx/conf/nginx.conf
+	if [ $? -ne 0 ]; then
+		echo 'Failed to modify keepalive timeout'
+		return 1
+	fi
+
 	return 0
 }
 

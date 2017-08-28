@@ -56,6 +56,13 @@ install_nginx1121() {
 		return 1
 	fi
 
+	# Enable TCP_CORK/TCP_NOPUSH
+	sed -i '1,$s/#tcp_nopush     on;/tcp_nopush     on;/g' /usr/local/nginx/conf/nginx.conf	
+	if [ $? -ne 0 ]; then
+		echo 'Failed to enable TCP_CORK'
+		return 1
+	fi
+
 	return 0
 }
 

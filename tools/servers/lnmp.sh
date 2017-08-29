@@ -49,13 +49,7 @@ install_nginx1121() {
 		echo 'Failed to install nginx1.12.1'
 		return 1
 	fi
-
-	/usr/local/nginx/sbin/nginx
-	if [ $? -ne 0 ]; then
-		echo 'Failed to start nginx1.12.1'
-		return 1
-	fi
-
+	
 	# Enable TCP_CORK/TCP_NOPUSH
 	sed -i '1,$s/#tcp_nopush     on;/tcp_nopush     on;/g' /usr/local/nginx/conf/nginx.conf	
 	if [ $? -ne 0 ]; then
@@ -67,6 +61,12 @@ install_nginx1121() {
 	sed -i '1,$s/keepalive_timeout  65;/keepalive_timeout  60;/g' /usr/local/nginx/conf/nginx.conf
 	if [ $? -ne 0 ]; then
 		echo 'Failed to modify keepalive timeout'
+		return 1
+	fi
+
+	/usr/local/nginx/sbin/nginx
+	if [ $? -ne 0 ]; then
+		echo 'Failed to start nginx1.12.1'
 		return 1
 	fi
 
@@ -239,6 +239,12 @@ fi
 sed -i 's/NONE/\/usr\/local/g' /usr/local/etc/php-fpm.conf
 if [ $? -ne 0 ]; then
 	echo 'Failed to init php-fpm.conf'
+	return 1
+fi
+
+sed -i '1,$s/pm = dynamic/pm = static/g' /usr/local/etc/php-fpm.d/www.conf
+if [ $? -ne 0 ]; then
+	echo 'Failed to optimize php-fpm.conf'
 	return 1
 fi
 

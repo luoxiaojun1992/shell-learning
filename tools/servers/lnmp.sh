@@ -260,6 +260,12 @@ if [ $? -ne 0 ]; then
 	return 1
 fi
 
+sed -i '1,$s/max_execution_time = 30/max_execution_time = 5/g' /usr/local/lib/php.ini
+if [ $? -ne 0 ]; then
+	echo 'Failed to optimize php.ini'
+	return 1
+fi
+
 /usr/local/sbin/php-fpm -y /usr/local/etc/php-fpm.conf -c /usr/local/lib/php.ini
 if [ $? -ne 0 ]; then
 	echo 'Failed to start php-fpm'

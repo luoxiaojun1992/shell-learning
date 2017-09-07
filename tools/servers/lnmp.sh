@@ -278,6 +278,12 @@ if [ $? -ne 0 ]; then
 	return 1
 fi
 
+sed -i '1,$s/;error_log = log\/php-fpm.log/error_log = log\/php-fpm.log/g' /usr/local/etc/php-fpm.conf
+if [ $? -ne 0 ]; then
+	echo 'Failed to optimize php-fpm.conf'
+	return 1
+fi
+
 /usr/local/sbin/php-fpm -y /usr/local/etc/php-fpm.conf -c /usr/local/lib/php.ini
 if [ $? -ne 0 ]; then
 	echo 'Failed to start php-fpm'

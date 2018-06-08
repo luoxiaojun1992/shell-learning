@@ -179,6 +179,16 @@ if [ $? -ne 0 ]; then
 	return 1
 fi
 
+# Install libmcrypt-devel
+echo 'Installing libmcrypt-devel'
+
+yum -y install libmcrypt-devel
+
+if [ $? -ne 0 ]; then
+	echo 'Failed to install libmcrypt-devel'
+	return 1
+fi
+
 # Download PHP-7
 if [ ! -f ~/php-7.2.0beta3.tar.gz ]; then
 	wget https://downloads.php.net/~remi/php-7.2.0beta3.tar.gz

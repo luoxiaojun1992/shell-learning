@@ -189,6 +189,16 @@ if [ $? -ne 0 ]; then
 	return 1
 fi
 
+# Install autoconf
+echo 'Installing autoconf'
+
+yum -y install autoconf
+
+if [ $? -ne 0 ]; then
+	echo 'Failed to install autoconf'
+	return 1
+fi
+
 # Download PHP-7
 if [ ! -f ~/php-7.2.0beta3.tar.gz ]; then
 	wget https://downloads.php.net/~remi/php-7.2.0beta3.tar.gz

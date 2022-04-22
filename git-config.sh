@@ -7,3 +7,4 @@ git config --global alias.ps push
 git config --global alias.br branch
 git config --global alias.st status
 git config --global alias.ad add
+git config --global alias.df diff

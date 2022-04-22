@@ -3,8 +3,10 @@
 workdir=$1
 cd $workdir
 
+sourceBranch=$2
+
 currentBranch=`git branch --show-current`
-echo "Merging master to $currentBranch"
+echo "Merging $sourceBranch to $currentBranch"
 
 echo "Updateing $currentBranch"
 git pull origin $currentBranch
@@ -18,6 +20,6 @@ fi
 git branch "$currentBranch-bak"
 
 echo "Merging branch"
-git pull origin master --no-ff
+git pull origin $sourceBranch --no-ff
 
 echo "Merged successfully"

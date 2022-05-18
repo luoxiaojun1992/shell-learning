@@ -8,7 +8,7 @@ sourceBranch=$2
 currentBranch=`git branch --show-current`
 echo "Merging $sourceBranch to $currentBranch"
 
-echo "Updateing $currentBranch"
+echo "Updating $currentBranch"
 git pull origin $currentBranch
 
 echo "Creating backup branch"
